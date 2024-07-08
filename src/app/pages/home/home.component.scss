@@ -1,0 +1,341 @@
+.spacer {
+    height: 80px; /* Adjust this value to match the height of your navbar */
+  }
+
+.home-container {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    padding: 2rem;
+    margin-top: 100px;
+    background-color: #E3F8F2;
+    /* Background color */
+}
+
+.text-content {
+    flex: 1 1 50%;
+    padding-right: 2rem;
+    box-sizing: border-box;
+}
+
+.main-title {
+    color: #12B886;
+    /* Main title color */
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.subtitle {
+    color: #889691;
+    /* Subtitle color */
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.description {
+    color: #087F5B;
+    /* Description color */
+    font-size: 1rem;
+    margin-top: 1.5rem;
+}
+
+.image-content {
+    flex: 1 1 50%;
+    text-align: center;
+}
+
+.image-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Services section styles */
+.services-section {
+    background-color: #F8FFFD;
+    /* Background color */
+    padding: 4rem 2rem;
+    /* Increase top and bottom padding */
+    text-align: center;
+}
+
+.services-title {
+    color: #12B886;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.services-description {
+    color: #889691;
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+}
+
+.services-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
+
+.service-card {
+    background-color: #E3F8F2;
+    /* Card color */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin: 1.5rem;
+    /* Increase margin */
+    padding: 1rem;
+    flex: 1 1 calc(25% - 3rem);
+    /* Ensure cards take up a significant portion of the width, including margins */
+    text-align: center;
+    position: relative;
+    transition: transform 0.3s ease;
+    /* Add smooth hover effect */
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    /* Lift the card on hover */
+}
+
+.image-wrapper {
+    position: relative;
+    top: -40px;
+    /* Image protrudes more from card */
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.service-card img {
+    max-width: 90%;
+    /* Increase image width */
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.service-title {
+    color: #12B886;
+    font-size: 1.2rem;
+    margin-top: 1rem;
+}
+
+.service-description {
+    color: #889691;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+}
+
+/* Consultation section styles */
+.consultation-section {
+    background-color: #2F4F4F;
+    padding: 4rem 2rem;
+    /* Increase padding */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.consultation-content {
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    width: 100%;
+    gap: 2rem;
+    /* Add gap between image and text */
+}
+
+.consultation-image {
+    flex: 1;
+}
+
+.consultation-image img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.consultation-text {
+    flex: 1;
+    padding-left: 2rem;
+}
+
+.consultation-title {
+    color: #63E6BE;
+    font-size: 2rem;
+    margin-bottom: 1rem;
+}
+
+.consultation-description {
+    color: #FFFFFF;
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    /* Shorten the white text */
+}
+
+.consultation-button {
+    background-color: #63E6BE;
+    color: #FFFFFF;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s;
+}
+
+.consultation-button:hover {
+    background-color: #5AC0A8;
+    /* Hover color */
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+
+    .text-content,
+    .image-content {
+        flex: 1 1 100%;
+        padding-right: 0;
+        text-align: center;
+    }
+
+    .text-content {
+        margin-bottom: 2rem;
+    }
+
+    .main-title {
+        font-size: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+    }
+
+    .description {
+        font-size: 0.9rem;
+    }
+
+    .services-cards {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .service-card {
+        flex: 1 1 90%;
+        max-width: 90%;
+        margin: 1.5rem 0;
+        /* Increase margin for better spacing */
+    }
+
+    .image-wrapper {
+        top: -30px;
+        /* Adjust for mobile */
+    }
+
+    .service-card img {
+        max-width: 80%;
+        /* Further increase image width for mobile */
+    }
+
+    .consultation-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .consultation-text {
+        padding-left: 0;
+        padding-top: 2rem;
+    }
+
+    .consultation-title {
+        font-size: 1.5rem;
+    }
+
+    .consultation-description {
+        font-size: 1rem;
+    }
+
+    .consultation-button {
+        font-size: 0.9rem;
+        padding: 0.75rem 1rem;
+    }
+
+    }
+
+
+
+.values-section {
+  background-color: #F8FFFD;
+  padding: 4rem 2rem;
+  text-align: center;
+}
+
+.values-title {
+  color: #087F5B;
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  text-align: center; /* Center the title */
+}
+
+.values-image {
+  margin-bottom: 2rem;
+}
+
+.values-image img {
+  max-width: 50%; /* Fixed size for the middle image */
+  height: auto;
+  border-radius: 10px;
+}
+
+.values-cards {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.value-card {
+  background-color: transparent; /* No background color for the card */
+  padding: 1rem;
+  margin: 1rem;
+  flex: 1 1 calc(33% - 2rem);
+  text-align: center;
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-10px);
+}
+
+.icon-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #E3F8F2;
+  border-radius: 50%;
+  width: 100px; /* Increased width */
+  height: 100px; /* Increased height */
+  margin: 0 auto 1rem;
+}
+
+.icon-wrapper i {
+  font-size: 3rem; /* Increased icon size */
+  color: #087F5B; /* Deep green icon color */
+}
+
+.value-title {
+  color: #12B886;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.value-description {
+  color: #889691;
+  font-size: 1rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .value-card {
+    flex: 1 1 100%;
+    margin: 1rem 0;
+  }
+}
