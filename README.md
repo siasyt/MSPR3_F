@@ -38,8 +38,107 @@ MSPR3_F Frontend est un projet basé sur Angular, visant à identifier et enregi
 
 ### 1. Cloner le dépôt
 
-```bash
+\```bash
 git clone https://github.com/siasyt/MSPR3_F.git
 cd MSPR3_F
-2. Installer les dépendances
+\```
+
+### 2. Installer les dépendances
+
 Assurez-vous d'avoir installé Node.js et npm, puis exécutez la commande suivante pour installer les dépendances du projet :
+
+\```bash
+npm install
+\```
+
+### 3. Démarrer le serveur de développement
+
+Exécutez la commande suivante pour démarrer le serveur de développement :
+
+\```bash
+ng serve
+\```
+
+Ouvrez [http://localhost:4200](http://localhost:4200) dans votre navigateur pour voir le projet.
+
+## Stratégie de gestion des branches
+
+### Création et poussée des branches
+
+Pour maintenir l'ordre et la collaboration dans le développement, nous avons utilisé plusieurs branches pour gérer différents modules et dossiers de fonctionnalités. Par exemple :
+
+1. **Création et poussée de la branche `add-consult`**：
+
+\```bash
+git checkout -b add-consult
+git add src/app/pages/consult
+git commit -m "Add consult page"
+git push origin add-consult
+\```
+
+2. **Création et poussée de la branche `add-footer`**：
+
+\```bash
+git checkout main
+git checkout -b add-footer
+git add src/app/pages/footer
+git commit -m "Add footer page"
+git push origin add-footer
+\```
+
+### Fusion des branches dans la branche principale
+
+Une fois le développement et les tests des branches de fonctionnalités terminés, nous fusionnons ces branches dans la branche principale (`main`), garantissant ainsi que la branche principale contient toujours le code le plus récent et stable.
+
+## Utilisation de GitHub Actions pour l'intégration continue (CI)
+
+Nous utilisons GitHub Actions pour automatiser le processus de construction, de test et de déploiement, garantissant la qualité du code et accélérant le flux de développement.
+
+### Configuration du workflow GitHub Actions
+
+Créez un fichier `main.yml` dans le répertoire `.github/workflows` et configurez-le comme suit：
+
+\```yaml
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build project
+        run: npm run build
+
+      - name: Run tests
+        run: npm test
+\```
+
+### Déclenchement manuel du workflow
+
+1. Accédez à la page du dépôt GitHub.
+2. Cliquez sur l'onglet `Actions`.
+3. Dans la liste des workflows à gauche, sélectionnez le workflow que vous avez configuré (par exemple `CI`).
+4. Déclenchez manuellement le workflow en cliquant sur le bouton `Run workflow`, puis sélectionnez la branche à exécuter (par exemple `main`) et cliquez sur le bouton vert `Run workflow`.
+
+## Conclusion
+
+Grâce à une gestion efficace des branches Git et à l'automatisation via GitHub Actions, nous avons mis en place un processus de développement et de déploiement efficace et fiable. La gestion des branches assure la coordination et la stabilité du développement, tandis que GitHub Actions garantit que chaque modification de code est automatiquement construite, testée et déployée, réduisant ainsi les erreurs humaines et augmentant l'efficacité globale du développement.
+
