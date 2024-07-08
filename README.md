@@ -41,10 +41,5 @@ MSPR3_F Frontend est un projet basé sur Angular, visant à identifier et enregi
 ```bash
 git clone https://github.com/siasyt/MSPR3_F.git
 cd MSPR3_F
-
 2. Installer les dépendances
 Assurez-vous d'avoir installé Node.js et npm, puis exécutez la commande suivante pour installer les dépendances du projet :
-npm install
-
-3. Démarrer le serveur de développement
-Exécutez la commande suivante pour démarrer le serveur de développement :
