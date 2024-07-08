@@ -1,12 +1,7 @@
-name: CI/CD Pipeline
+name: Manual CI/CD Pipeline
 
 on:
-  push:
-    branches:
-      - main  
-  pull_request:
-    branches:
-      - main 
+  workflow_dispatch:  # 允许手动触发工作流程
 
 jobs:
   build:
@@ -19,10 +14,17 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '14'
+        node-version: '18'  
 
     - name: Install dependencies
       run: npm install
+
+    - name: Build project
+      run: npm run build
+
+    - name: Run tests
+      run: npm test
+
 
     - name: Build project
       run: npm run build
