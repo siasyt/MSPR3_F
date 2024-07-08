@@ -1,0 +1,253 @@
+<app-navbar></app-navbar>
+
+<div class="container">
+  <section class="features-section">
+    <h2>Pourquoi choisir Animal Track?</h2>
+    <div class="features">
+      <div class="feature" tabindex="0">
+        <i class="fas fa-paw" aria-hidden="true"></i>
+        <h3>Précision</h3>
+        <p>Nos algorithmes de reconnaissance avancés garantissent une identification précise des empreintes animales avec un taux de précision élevé.</p>
+      </div>
+      <div class="feature" tabindex="0">
+        <i class="fas fa-globe" aria-hidden="true"></i>
+        <h3>Accessibilité</h3>
+        <p>Notre service est abordable et accessible à tous, offrant des outils puissants pour les chercheurs, les écologistes et les amateurs de nature.</p>
+      </div>
+      <div class="feature" tabindex="0">
+        <i class="fas fa-headset" aria-hidden="true"></i>
+        <h3>Support</h3>
+        <p>Nous offrons un support complet pour vous aider à utiliser notre service et à interpréter les résultats, avec une assistance rapide et efficace.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="faq-section">
+    <h2>Questions fréquentes</h2>
+    <p>Voici quelques questions fréquemment posées sur notre application de reconnaissance d'empreintes animales :</p>
+    <div class="faq-item" *ngFor="let faq of faqs" (click)="toggleFAQ(faq)" tabindex="0" role="button" [attr.aria-expanded]="faq.active">
+      <div class="faq-question" [class.active]="faq.active">
+        <span>{{ faq.question }}</span>
+        <i [class]="faq.active ? 'fas fa-minus' : 'fas fa-plus'" aria-hidden="true"></i>
+      </div>
+      <div class="faq-answer" [class.active]="faq.active">
+        {{ faq.answer }}
+      </div>
+    </div>
+  </section>
+
+  <section class="actions-section">
+    <h2>Actions</h2>
+    <p>Utilisez les fonctionnalités ci-dessous pour interagir avec notre application.</p>
+    <div class="actions">
+      <div class="action" tabindex="0">
+        <i class="fas fa-upload" aria-hidden="true"></i>
+        <h3>Étape 1: Sélectionner</h3>
+        <p>L'envoi d'images claires des traces d'animaux est plus utile pour des prédictions précises.</p>
+        <input type="file" id="fileInput" (change)="onFileSelected($event)" style="display: none;">
+        <button (click)="triggerFileInput()" class="upload-btn" tabindex="0">Choisir un fichier</button>
+        <p *ngIf="selectedFile">File selected successfully</p>
+      </div>
+      <div class="action" tabindex="0">
+        <i class="fas fa-cloud-upload-alt" aria-hidden="true"></i>
+        <h3>Étape 2: Télécharger</h3>
+        <p>Veillez à ce que le format et la taille des images téléchargées soient corrects</p>
+        <button (click)="uploadFile()" class="upload-btn" tabindex="0">Upload</button>
+        <p *ngIf="fileUploadSuccess">File upload successful</p>
+        <p *ngIf="errorMessage">{{ errorMessage }}</p>
+      </div>
+      <div class="action" tabindex="0">
+        <i class="fas fa-brain" aria-hidden="true"></i>
+        <h3>Étape 3: Prédire</h3>
+        <p>Commencez l'analyse et prédisez l'animal à partir de l'image téléchargée.</p>
+        <button (click)="startPrediction()" class="upload-btn" tabindex="0">Démarrer la Prédiction</button>
+        <p *ngIf="predictionMessage">{{ predictionMessage }}</p>
+        <p *ngIf="predictionErrorMessage">{{ predictionErrorMessage }}</p>
+      </div>
+    </div>
+  </section>
+
+  <div *ngIf="predictionResult" class="mt-5">
+    <div class="prediction-result-container">
+      <h2 class="prediction-result-title">Résultat de la Prédiction</h2>
+      <p class="predicted-class"><strong>Classe Prédite: </strong><span>{{ predictionResult.predicted_class_name }}</span></p>
+      <p class="highest-probability"><strong>Probabilité la Plus Élevée: </strong><span>{{ predictionResult.highest_probability }}</span></p>
+      <table class="prediction-table">
+        <thead>
+          <tr>
+            <th>Classe</th>
+            <th>Probabilité</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let prediction of predictionResult.predicted_classes_with_probabilities">
+            <td>{{ prediction.name }}</td>
+            <td>{{ prediction.probability }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div *ngIf="predictionResult.animal_info" class="animal-info-section mt-5">
+      <h2 class="text-center mb-4">Informations sur l'animal</h2>
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-shield-alt info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Conservation Status']">
+            <strong>Statut de conservation :</strong> {{ predictionResult.animal_info['Conservation Status'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-map-marker-alt info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Région']">
+            <strong>Région :</strong> {{ predictionResult.animal_info['Région'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-paw info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Espèce']">
+            <strong>Espèce :</strong> {{ predictionResult.animal_info['Espèce'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-book info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Nom latin']">
+            <strong>Nom latin :</strong> {{ predictionResult.animal_info['Nom latin'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-users info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Famille']">
+            <strong>Famille :</strong> {{ predictionResult.animal_info['Famille'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-ruler-vertical info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Max_size(cm)']">
+            <strong>Taille maximale (cm) :</strong> {{ predictionResult.animal_info['Max_size(cm)'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-ruler-horizontal info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Min_size(cm)']">
+            <strong>Taille minimale (cm) :</strong> {{ predictionResult.animal_info['Min_size(cm)'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-dog info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Breed']">
+            <strong>Race :</strong> {{ predictionResult.animal_info['Breed'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-info-circle info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Description']">
+            <strong>Description :</strong> {{ predictionResult.animal_info['Description'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-smile info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Fun fact']">
+            <strong>Anecdote :</strong> {{ predictionResult.animal_info['Fun fact'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-tree info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Habitat']">
+            <strong>Habitat :</strong> {{ predictionResult.animal_info['Habitat'] }}
+          </p>
+        </div>
+      </div>
+      <hr class="info-divider">
+      <div class="animal-info-item" tabindex="0">
+        <i class="fas fa-seedling info-icon" aria-hidden="true"></i>
+        <div class="info-content">
+          <p *ngIf="predictionResult.animal_info['Reproduction']">
+            <strong>Reproduction :</strong> {{ predictionResult.animal_info['Reproduction'] }}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="!predictionConfirmed" class="expected-result-section">
+      <div class="row">
+        <div class="col-md-6 d-flex flex-column justify-content-center align-items-center">
+          <h3 class="expected-result-title">Confirmez votre résultat</h3>
+          <p class="expected-result-text">Merci de vérifier si ce résultat correspond à vos attentes. Vous pouvez nous contacter pour plus d'informations ou demander un devis.</p>
+          <div class="d-flex justify-content-center">
+            <button (click)="confirmPrediction()" class="btn btn-success me-2" tabindex="0">Oui</button>
+            <button (click)="rejectPrediction()" class="btn btn-outline-success" tabindex="0">Non</button>
+          </div>
+        </div>
+        <div class="col-md-6 d-flex justify-content-center align-items-center">
+          <img src="bg2.png" alt="Confirmation Image" class="expected-result-image" tabindex="0">
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="predictionConfirmed" class="contact-form-section mt-4">
+      <div class="row">
+        <div class="col-md-6 contact-info">
+          <h3>Informations supplémentaires</h3>
+          <p>Merci de vérifier si ce résultat correspond à vos attentes. Vous pouvez nous contacter pour plus d'informations ou demander un devis. Les informations suivantes sont importantes pour améliorer la précision de notre algorithme :</p>
+          <ul>
+            <li><i class="fas fa-cloud-sun info-icon" aria-hidden="true"></i> <span>La météo peut influencer les empreintes laissées par les animaux.</span></li>
+            <li><i class="fas fa-tree info-icon" aria-hidden="true"></i> <span>Les zones protégées sont souvent habitées par des espèces spécifiques.</span></li>
+            <li><i class="fas fa-map-marker-alt info-icon" aria-hidden="true"></i> <span>La localisation géographique est cruciale pour l'identification correcte des espèces.</span></li>
+          </ul>
+        </div>
+        <div class="col-md-6 form-container">
+          <form (ngSubmit)="submitAdditionalInfo()" class="mt-3">
+            <div class="mb-3">
+              <label for="weather" class="form-label">Quelle est la météo actuelle ?</label>
+              <input type="text" id="weather" [(ngModel)]="weather" name="weather" class="form-control" required tabindex="0">
+            </div>
+            <div class="mb-3">
+              <label for="protectedArea" class="form-label">Êtes-vous dans une zone protégée ?</label>
+              <input type="text" id="protectedArea" [(ngModel)]="protectedArea" name="protectedArea" class="form-control" required tabindex="0">
+            </div>
+            <div class="mb-3">
+              <label for="country" class="form-label">Dans quel pays avez-vous trouvé cet animal ?</label>
+              <input type="text" id="country" [(ngModel)]="country" name="country" class="form-control" required tabindex="0">
+            </div>
+            <div class="btn-group">
+              <button type="submit" class="btn btn-success" tabindex="0">Soumettre</button>
+              <button (click)="rejectPrediction()" class="btn btn-outline-danger" tabindex="0">Abandonner</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
