@@ -1,0 +1,102 @@
+<app-navbar></app-navbar>
+<div class="home-container">
+  <div class="spacer" aria-hidden="true"></div>
+  <div class="text-content">
+    <h1 class="main-title">Tracez la route de la découverte avec WildLens, au cœur de la nature sauvage!</h1>
+    <p class="subtitle" *ngIf="!isMobileView">
+      Plongez dans l'aventure écologique avec WildLens, l'application révolutionnaire qui ouvre un nouveau chapitre dans la conservation animale. Par une simple balade en forêt, transformez chaque pas en une quête de connaissance grâce à notre technologie de pointe d'identification des empreintes.
+    </p>
+    <p class="subtitle" *ngIf="isMobileView">
+      Plongez dans l'aventure avec WildLens et découvrez la nature grâce à notre technologie d'identification des empreintes.
+    </p>
+    <p class="description" *ngIf="!isMobileView">
+      WildLens ne se contente pas de rapprocher la nature de vous ; elle crée une communauté de gardiens de la faune dédiée à la protection de notre biodiversité. Chaque interaction enrichit notre base de données, alimentant des stratégies de conservation plus efficaces et favorisant une prise de conscience globale.
+    </p>
+    <p class="description" *ngIf="isMobileView">
+      WildLens crée une communauté de gardiens de la faune dédiée à la protection de notre biodiversité, enrichissant notre base de données pour des stratégies de conservation plus efficaces.
+    </p>
+  </div>
+  <div class="image-content">
+    <img src="wildaware.png" alt="Vertek Energy" tabindex="0">
+  </div>
+</div>
+
+<div class="services-section">
+  <h2 class="services-title">Nos Services</h2>
+  <p class="services-description">Découvrez comment WildLens peut vous aider à explorer, identifier et protéger la faune sauvage.</p>
+  <div class="services-cards">
+    <div class="service-card" role="article" aria-labelledby="service1-title" aria-describedby="service1-description" tabindex="0">
+      <div class="image-wrapper">
+        <img src="home2.png" alt="Service 1">
+      </div>
+      <h3 class="service-title" id="service1-title">Identification des Empreintes</h3>
+      <p class="service-description" id="service1-description">Utilisez notre technologie avancée pour identifier facilement les empreintes d'animaux sauvages.</p>
+    </div>
+    <div class="service-card" role="article" aria-labelledby="service2-title" aria-describedby="service2-description" tabindex="0">
+      <div class="image-wrapper">
+        <img src="home1.png" alt="Service 2">
+      </div>
+      <h3 class="service-title" id="service2-title">Suivi des Animaux</h3>
+      <p class="service-description" id="service2-description">Suivez les déplacements et les habitudes des animaux pour une meilleure compréhension de leur comportement.</p>
+    </div>
+    <div class="service-card" role="article" aria-labelledby="service3-title" aria-describedby="service3-description" tabindex="0">
+      <div class="image-wrapper">
+        <img src="home3.png" alt="Service 3">
+      </div>
+      <h3 class="service-title" id="service3-title">Éducation et Sensibilisation</h3>
+      <p class="service-description" id="service3-description">Apprenez-en plus sur la faune sauvage et comment vous pouvez aider à la protéger.</p>
+    </div>
+    <div class="service-card" role="article" aria-labelledby="service4-title" aria-describedby="service4-description" tabindex="0">
+      <div class="image-wrapper">
+        <img src="home4.png" alt="Service 4">
+      </div>
+      <h3 class="service-title" id="service4-title">Communauté de Gardiens</h3>
+      <p class="service-description" id="service4-description">Rejoignez une communauté de passionnés de la nature dédiée à la protection de la biodiversité.</p>
+    </div>
+  </div>
+</div>
+
+<div class="consultation-section">
+  <div class="consultation-content">
+    <div class="consultation-image">
+      <img src="home5.png" alt="Consultation" tabindex="0">
+    </div>
+    <div class="consultation-text">
+      <h2 class="consultation-title">Vous êtes intéressé pour une consultation ?</h2>
+      <p class="consultation-description">N'hésitez plus et envoyez-nous un message pour nous le faire savoir !</p>
+      <button class="consultation-button" (click)="openContactForm()" tabindex="0">Nous contacter</button>
+    </div>
+  </div>
+</div>
+
+<div class="values-section">
+  <h2 class="values-title">Pourquoi choisir WildLens ?</h2>
+  <div class="values-image">
+    <img src="home6.png" alt="WildLens" tabindex="0">
+  </div>
+  <div class="values-cards">
+    <div class="value-card" role="article" aria-labelledby="value1-title" aria-describedby="value1-description" tabindex="0">
+      <div class="icon-wrapper">
+        <i class="fas fa-binoculars" aria-hidden="true"></i>
+      </div>
+      <h3 class="value-title" id="value1-title">Technologie Avancée</h3>
+      <p class="value-description" id="value1-description">Des solutions de pointe pour identifier et suivre les empreintes.</p>
+    </div>
+    <div class="value-card" role="article" aria-labelledby="value2-title" aria-describedby="value2-description" tabindex="0">
+      <div class="icon-wrapper">
+        <i class="fas fa-users" aria-hidden="true"></i>
+      </div>
+      <h3 class="value-title" id="value2-title">Communauté</h3>
+      <p class="value-description" id="value2-description">Une communauté de gardiens de la faune engagée dans la conservation.</p>
+    </div>
+    <div class="value-card" role="article" aria-labelledby="value3-title" aria-describedby="value3-description" tabindex="0">
+      <div class="icon-wrapper">
+        <i class="fas fa-book-open" aria-hidden="true"></i>
+      </div>
+      <h3 class="value-title" id="value3-title">Connaissance Partagée</h3>
+      <p class="value-description" id="value3-description">Partagez vos découvertes et apprenez des autres utilisateurs.</p>
+    </div>
+  </div>
+</div>
+
+<app-footer></app-footer>
