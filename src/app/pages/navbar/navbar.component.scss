@@ -1,0 +1,194 @@
+body {
+  padding-top: 80px; /* Adjust this value according to your navbar height */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  background-color: #F8FFFD; /* Background color */
+  color: #185D4C; /* Font color */
+  position: fixed; /* Fix the navbar at the top */
+  top: 0;
+  width: 100%;
+  z-index: 1000; /* Ensure the navbar is above other elements */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional: Add shadow for better visibility */
+}
+
+.navbar-brand a {
+  display: flex;
+  align-items: center;
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.brand-logo {
+  height: 60px; /* Increase the logo size */
+}
+
+.navbar-menu {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+}
+
+.navbar-menu ul {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li {
+  margin: 0 1rem;
+}
+
+.navbar-menu a {
+  color: #185D4C; /* Normal font color */
+  text-decoration: none;
+  font-size: 1.2rem; /* Increase font size */
+  font-weight: bold; /* Make font bold */
+  transition: color 0.3s;
+  cursor: pointer; /* Change cursor to pointer on hover */
+}
+
+.navbar-menu a:hover {
+  color: #12B886; /* Hover font color */
+}
+
+.navbar-menu a.active-link,
+.navbar-menu a.router-link-active {
+  color: #12B886; /* Active page font color */
+}
+
+.navbar-menu button {
+  background-color: #12B886; /* Button color */
+  color: white;
+  padding: 0.5rem 1.5rem;
+  border: none;
+  border-radius: 20px; /* More rounded corners */
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s;
+  margin-left: 1rem; /* Add space between buttons */
+}
+
+.navbar-menu button.logout-button {
+  background-color: #0E8B6C; /* Different color for the logout button */
+}
+
+.navbar-menu button:hover {
+  background-color: #0C7055; /* Hover color for contact us button */
+}
+
+.navbar-menu button.logout-button:hover {
+  background-color: #0B5647; /* Hover color for logout button */
+}
+
+/* Responsive styles */
+.navbar-burger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+}
+
+.navbar-burger span {
+  height: 2px;
+  width: 25px;
+  background-color: #185D4C;
+  margin: 3px 0;
+}
+
+/* Side menu styles */
+.side-menu {
+  position: fixed;
+  top: 0;
+  right: -250px;
+  width: 250px;
+  height: 100%;
+  background-color: #F8FFFD; /* Background color */
+  color: #185D4C;
+  transition: right 0.3s;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  z-index: 1000; /* Ensure side-menu is above overlay */
+}
+
+.side-menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.side-menu li {
+  margin: 1rem 0; /* Ensure equal spacing between items */
+}
+
+.side-menu a {
+  color: #185D4C; /* Normal font color */
+  text-decoration: none;
+  font-size: 1.2rem; /* Font size */
+  font-weight: bold; /* Make font bold */
+  cursor: pointer; /* Change cursor to pointer on hover */
+  padding: 0.5rem 1rem;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.side-menu a:hover {
+  background-color: #b2d8c7; /* Hover background color */
+  color: #12B886; /* Hover font color */
+}
+
+.side-menu.is-active {
+  right: 0;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  transition: display 0.3s;
+  z-index: 500; /* Ensure overlay is below side-menu */
+}
+
+.overlay.is-active {
+  display: block;
+}
+
+/* Media Queries for Responsive Design */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none;
+  }
+
+  .navbar-burger {
+    display: flex;
+  }
+
+  .navbar {
+    position: fixed;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

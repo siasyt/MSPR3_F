@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Application de reconnaissance d'empreintes animales, permettant une identification précise des animaux pour les chercheurs, écologistes et amateurs de nature.">
+  <meta name="keywords" content="empreintes animales, reconnaissance d'empreintes, identification des animaux, conservation de la nature">
+  <meta name="author" content="Votre Nom">
+  <title>Animal Track - Reconnaissance d'Empreintes Animales</title>
+  <link rel="stylesheet" href="navbar.component.scss">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="navbar-brand">
+    <a routerLink="/home" routerLinkActive="active-link">
+      <img src="logo_vert.png" alt="Brand Logo" class="brand-logo">
+    </a>
+  </div>
+  <div class="navbar-menu" [class.is-active]="isMenuActive">
+    <ul>
+      <li><a routerLink="/home" routerLinkActive="active-link" (click)="closeMenu()" (click)="navigateToHome()" tabindex="0">Accueil</a></li>
+      <li><a href="javascript:void(0)" routerLinkActive="active-link" (click)="showPrivacyModal()" tabindex="0">Consulter</a></li>
+      <li><a routerLink="/historique" routerLinkActive="active-link" (click)="navigateToHistorique()" tabindex="0">Histoires</a></li>
+    </ul>
+    <button (click)="contactUs()" tabindex="0">Nous contacter</button>
+    <button class="logout-button" (click)="logout()" tabindex="0">Déconnexion</button>
+  </div>
+  <button class="navbar-burger" (click)="toggleMenu()" [attr.aria-expanded]="isMenuActive" tabindex="0" aria-label="Toggle navigation menu">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+</nav>
+
+<div class="side-menu" [class.is-active]="isMenuActive">
+  <ul>
+    <li><a routerLink="/home" routerLinkActive="active-link" (click)="closeMenu()" (click)="navigateToHome()" tabindex="0">Accueil</a></li>
+    <li><a href="javascript:void(0)" routerLinkActive="active-link" (click)="showPrivacyModal()" tabindex="0">Consulter</a></li>
+    <li><a routerLink="/historique" routerLinkActive="active-link" (click)="navigateToHistorique()" tabindex="0">Histoires</a></li>
+    <li><a (click)="contactUs()" tabindex="0">Nous contacter</a></li>
+    <li><a (click)="logout()" tabindex="0">Déconnexion</a></li>
+  </ul>
+</div>
+<div class="overlay" [class.is-active]="isMenuActive" (click)="closeMenu()" tabindex="0"></div>
+
+<!-- Privacy Modal -->
+<div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="privacyModalLabel">Conditions de confidentialité</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Nous respectons votre vie privée et nous nous engageons à protéger vos informations personnelles. Veuillez lire nos conditions de confidentialité attentivement avant de continuer. En acceptant ces conditions, vous consentez à la collecte et à l'utilisation de vos informations conformément à notre politique de confidentialité.</p>
+        <div *ngIf="showMore" id="moreContent">
+          <h6>Informations supplémentaires</h6>
+          <p>Nous collectons diverses informations lorsque vous utilisez nos services, y compris des données personnelles et des informations sur votre utilisation de nos services. Nous utilisons ces informations pour améliorer nos services et vous offrir une expérience personnalisée.</p>
+          <p>Nous pouvons partager vos informations avec des tiers de confiance pour des raisons de traitement et de marketing. Nous mettons en œuvre des mesures de sécurité appropriées pour protéger vos informations contre tout accès non autorisé.</p>
+          <p>Vous avez le droit d'accéder à vos informations personnelles et de demander leur correction ou leur suppression. Si vous avez des questions concernant notre politique de confidentialité, veuillez nous contacter.</p>
+        </div>
+        <a href="javascript:void(0)" (click)="toggleShowMore()" class="text-success">{{ showMore ? 'Voir moins' : 'Voir plus' }}</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="declinePrivacy()">Je refuse</button>
+        <button type="button" class="btn btn-success" [disabled]="countdown > 0" (click)="acceptPrivacy()">J'accepte {{ countdown > 0 ? '(' + countdown + 's)' : '' }}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  
+  
