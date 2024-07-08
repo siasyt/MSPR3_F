@@ -1,0 +1,64 @@
+<div class="login-wrapper">
+    <div class="image-logo">
+        <img class="img-auto-auto" src="wildaware.png" alt="Person">
+    </div>
+    <div class="login-container" *ngIf="!showRegister">
+        <h2>Accéder à mon espace</h2>
+        <div *ngIf="loginFailed" class="alert alert-danger">
+            Identifiants incorrects. Veuillez réessayer.
+        </div>
+        <form (ngSubmit)="login()">
+            <div class="form-group">
+                <input type="email" [(ngModel)]="email" name="email" placeholder="Adresse Mail" required #emailInput="ngModel">
+                <div *ngIf="emailInput.touched && emailInput.invalid" class="alert alert-danger">
+                    L'adresse mail est requise.
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" [(ngModel)]="password" name="password" placeholder="Mot de passe" required #passwordInput="ngModel">
+                <div *ngIf="passwordInput.touched && passwordInput.invalid" class="alert alert-danger">
+                    Le mot de passe est requis.
+                </div>
+            </div>
+            <div class="checkbox">
+                <input type="checkbox" id="remember-me">
+                <label for="remember-me">Se souvenir de moi</label>
+            </div>
+            <button type="submit">CONNEXION</button>
+        </form>
+        <div class="login-footer">
+            <span>Pas encore de compte WILDLENS ?</span>
+            <button type="button" (click)="showRegisterForm()">INSCRIPTION</button>
+        </div>
+    </div>
+
+    <div class="register-container" *ngIf="showRegister">
+        <h2>Créer un compte</h2>
+        <form (ngSubmit)="register()">
+            <div class="form-group">
+                <input type="email" [(ngModel)]="email" name="email" placeholder="Adresse Mail" required #emailRegInput="ngModel">
+                <div *ngIf="emailRegInput.touched && emailRegInput.invalid" class="alert alert-danger">
+                    Une adresse mail est requise.
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" [(ngModel)]="password" name="password" placeholder="Mot de passe" required #passwordRegInput="ngModel">
+                <div *ngIf="passwordRegInput.touched && passwordRegInput.invalid" class="alert alert-danger">
+                    Un mot de passe est requis.
+                </div>
+            </div>
+            <div class="form-group">
+                <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" placeholder="Confirmer Mot de passe" required #confirmPasswordInput="ngModel">
+                <div *ngIf="confirmPasswordInput.touched && confirmPasswordInput.invalid || password !== confirmPassword" class="alert alert-danger">
+                    Les mots de passe doivent correspondre.
+                </div>
+            </div>
+            <button type="submit">INSCRIPTION</button>
+        </form>
+        <div class="register-footer">
+            <span>Déjà inscrit ?</span>
+            <button type="button" (click)="showLoginForm()">CONNEXION</button>
+        </div>
+    </div>
+</div>
+
