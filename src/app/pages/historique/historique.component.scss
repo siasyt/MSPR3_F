@@ -1,0 +1,91 @@
+.card-title {
+  color: #185D4C !important;
+}
+
+.btn-success {
+  background-color: #28a745;
+  border-color: #28a745;
+}
+
+.btn-success:hover {
+  background-color: #218838;
+  border-color: #1e7e34;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  border-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border-color: #bd2130;
+}
+
+.card {
+  transition: transform 0.2s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.icon-spacing {
+  margin-right: 8px;
+}
+
+
+.intro-section {
+  background-color: #e8f5e9; /* 浅绿色背景 */
+  padding: 20px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  margin-top: 200px;
+}
+
+.intro-section h2 {
+  color: #2e7d32; /* 深绿色标题 */
+}
+
+.intro-section p {
+  color: #2e7d32; /* 深绿色文本 */
+}
+
+.intro-image {
+  width: 100%;
+  max-width: 300px;
+  height: auto;
+}
+
+.card {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+}
+
+.card-img-top {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.card-body {
+  padding: 15px;
+}
+
+.btn-primary {
+  background-color: #2e7d32;
+  border-color: #2e7d32;
+}
+
+.btn-primary:hover {
+  background-color: #1b5e20;
+  border-color: #1b5e20;
+}
+
+.btn-danger {
+  background-color: #d32f2f;
+  border-color: #d32f2f;
+}
+
+.btn-danger:hover {
+  background-color: #b71c1c;
+  border-color: #b71c1c;
+}
