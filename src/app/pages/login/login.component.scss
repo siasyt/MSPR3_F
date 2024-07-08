@@ -1,0 +1,100 @@
+.login-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // 垂直居中
+    align-items: center; // 水平居中
+    height: 100vh;
+    font-family: 'Roboto', sans-serif;
+    background: url('/login.png') // 浅绿色背景
+  }
+  
+  .image-logo {
+    margin-bottom: 30px; // logo和表单之间的间隔
+  }
+  
+  .img-auto-auto {
+    max-width: 250px
+  }
+  
+  .login-container,
+  .register-container {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+    padding: 20px;
+    background: #fff;
+    border-radius: 5px;
+    text-align: center;
+    transition: all 0.3s ease-in-out;
+    margin: 0 20px; // 在小屏幕上两侧的空间
+  }
+  
+  // 输入框、按钮等其他样式
+  .form-group {
+    margin-bottom: 15px;
+  
+    input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+  }
+  
+  .checkbox {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 20px;
+  
+    input[type="checkbox"] {
+      margin-right: 5px;
+    }
+  }
+  
+  button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #4CAF50; // 绿色按钮
+    color: white;
+    cursor: pointer;
+  
+    &:hover {
+      background-color: #43a047; // 鼠标悬停的深绿色
+    }
+  }
+  
+  .login-footer,
+  .register-footer {
+    margin-top: 15px;
+    
+    span {
+      margin-right: 5px;
+      color: #666;
+    }
+  
+    button {
+      background: none;
+      border: none;
+      color: #4CAF50; // 绿色文本
+      cursor: pointer;
+  
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+  
+  // 响应式设计：在小屏幕上调整布局
+  @media (max-width: 500px) {
+    .login-container,
+    .register-container {
+      width: 90%;
+    }
+  
+    .img-auto-auto {
+      max-width: 100px;
+    }
+  }
